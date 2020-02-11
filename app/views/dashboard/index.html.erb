@@ -1,28 +1,49 @@
-<h1>Weather for <%= @weather.city %></h1>
+<div class="container has-text-centered">
+  <div class="column is-6 is-offset-3">
+    <h1 class="title">
+      Weather for <%= @weather.city %><br>
+      <%= @weather.temperature %>&ordm;F / <%= fahrenheit_to_celsius @weather.temperature %>&ordm;C
+    </h1>
+    <h2 class="subtitle">
+<!--      $this is the best software platform for running an internet business. We handle billions of dollars every year for forward-thinking businesses around the world.-->
+      <table>
+        <tbody>
+          <tr>
+            <td>Pressure</td>
+            <td><%= @weather.pressure %>hpa</td>
+          </tr>
+          <tr>
+            <td>Humidity</td>
+            <td><%= @weather.humidity %>%</td>
+          </tr>
+          <tr>
+            <td>Min Temperature</td>
+            <td><%= @weather.min_temperature %>&ordm;F</td>
+          </tr>
+          <tr>
+            <td>Max Temperature</td>
+            <td><%= @weather.max_temperature %>&ordm;F</td>
+          </tr>
+          <tr>
+            <td>Wind Speed</td>
+            <td><%= @weather.wind_speed %>mi/h</td>
+          </tr>
+        </tbody>
+      </table>
+    </h2>
+    <div class="box">
+      <div class="field is-grouped">
+        <p class="control is-expanded">
+          <input id="search_term" class="input" type="text" placeholder="Enter your place">
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2><%= @weather.temperature %>&ordm;F</h2>
-
-<table>
-  <tbody>
-    <tr>
-      <td>Pressure</td>
-      <td><%= @weather.pressure %>hpa</td>
-    </tr>
-    <tr>
-      <td>Humidity</td>
-      <td><%= @weather.humidity %>%</td>
-    </tr>
-    <tr>
-      <td>Min Temperature</td>
-      <td><%= @weather.min_temperature %>&ordm;F</td>
-    </tr>
-    <tr>
-      <td>Max Temperature</td>
-      <td><%= @weather.max_temperature %>&ordm;F</td>
-    </tr>
-    <tr>
-      <td>Wind Speed</td>
-      <td><%= @weather.wind_speed %>mi/h</td>
-    </tr>
-  </tbody>
-</table>
+<script>
+  function activatePlacesSearch() {
+    var input = document.getElementById('search_term');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+</script>
