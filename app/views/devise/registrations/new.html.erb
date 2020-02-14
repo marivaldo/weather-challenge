@@ -1,0 +1,55 @@
+<div class="container has-text-centered">
+  <div class="column is-4 is-offset-4">
+    <h3 class="title has-text-white">Sign up</h3>
+    <hr class="login-hr">
+    
+    <div class="box">
+      <figure class="avatar">
+        <%= image_tag "weather-sunny-showers-512.png", width: 128 %>
+      </figure>
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="field">
+          <div class="control">
+            <%= f.text_field :first_name, autofocus: true, placeholder: 'First Name', class: 'input is-large' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <%= f.text_field :last_name, placeholder: 'Last Name', class: 'input is-large' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <%= f.email_field :email, placeholder: 'Your Email', class: 'input is-large' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %> <br/>
+            <%= f.password_field :password, placeholder: "New Password", class: 'input is-large' %>
+          </div>
+        </div>
+        
+        <div class="field">
+          <div class="control">
+            <%= f.password_field :password_confirmation, placeholder: "New Password", class: 'input is-large' %>
+          </div>
+        </div>
+      
+        <button class="button is-block is-info is-large is-fullwidth">Login <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+      <% end %>
+
+      <p class="has-text-white">
+        <%= render "devise/shared/links" %>
+      </p>
+    </div>
+  </div>
+</div>

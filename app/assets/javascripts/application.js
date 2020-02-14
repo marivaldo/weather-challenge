@@ -11,5 +11,17 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require turbolinks
+//= require jquery/dist/jquery
 //= require activestorage
 //= require_tree .
+
+function activatePlacesSearch() {
+
+  var input = document.getElementById('search_term');
+  var autocomplete = new google.maps.places.Autocomplete(input);
+
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    console.log(input.value);
+  })
+}

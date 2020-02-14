@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   </head>
@@ -20,8 +20,6 @@
     </div>
   </section>
 
-  <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASgFzxIvN2ZrB0dF7vIa-OTkKE87AjtRU&libraries=places&callback=activatePlacesSearch">
-  </script>
+  <%= yield :script_includes %>
   </body>
 </html>
