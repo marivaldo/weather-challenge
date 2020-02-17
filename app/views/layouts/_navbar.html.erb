@@ -37,10 +37,6 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              <%= "Last access: #{current_user.last_sign_in_at}" if current_user.last_sign_in_at %>
-              <%= "Hits: #{current_user.sign_in_count}" if current_user.sign_in_count %>
-            </a>
             <hr class="navbar-divider">
             <%= link_to 'Sair', destroy_user_session_url,
                         method: :delete,

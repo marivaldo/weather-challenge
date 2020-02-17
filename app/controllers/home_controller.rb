@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @weather = TemperatureService.get_weather(params[:city] ? params[:city] : 'Sao Paulo, BR')
+    @weather = TemperatureService.get_weather(params[:city])
   end
 end
