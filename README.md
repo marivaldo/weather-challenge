@@ -1,5 +1,46 @@
 # Weather Challenge
 
+Site para consultar a previsão do tempo de uma determinada cidade.
+O Site possui uma área pública, que não necessita registro de usuário e uma área privada,
+onde usuário pode favoritar as cidades para facilitar a consulta.
+
+### Instalação
+```
+gem install bundler
+bundle install
+yarn install
+```
+
+### Migrations
+```
+bin/rails db:create:all db:migrate
+```
+---
+
+### Testes
+```
+bin/rspec
+```
+
+### Docker
+
+```shell
+  docker-compose build
+  docker-compose up
+```
+
+Acesse em http://localhost:3000
+
+### Sem Docker
+
+```shell
+  bin/rails server -p 3000
+```
+
+Acesse em http://localhost:3000
+
+---
+
 ## O Desafio
 
 Você recebeu a tarefa de desenvolver algumas features para um site de previsão do tempo.

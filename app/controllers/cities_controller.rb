@@ -1,4 +1,4 @@
-class CitiesController < ApplicationController
+class CitiesController < RestrictController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
   # GET /cities

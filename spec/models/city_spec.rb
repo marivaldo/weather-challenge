@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe City, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it '#create' do
+    city = create(:city, name: 'Sao Paulo,BR')
+    expect(city.name).to eq('Sao Paulo,BR')
+  end
 end

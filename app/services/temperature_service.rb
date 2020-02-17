@@ -2,6 +2,11 @@
 
 # Class utils temperature
 class TemperatureService
+
+  # Get weather and converter fahrenheit to celsius
+  #
+  # @param city [string]  city name to search in Openweather2
+  # @return [hash]        hash of openweather object
   def self.get_weather(city)
     weather = Openweather2.get_weather(city: city, units: 'imperial')
     weather = weather.instance_values
