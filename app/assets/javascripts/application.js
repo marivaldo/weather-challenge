@@ -68,13 +68,17 @@ function activatePlacesSearch() {
 
 function get_weather(city) {
     $.getJSON('/api/weather?city=' + city, function(data) {
-        $('#city_name').val(city);
-        $('.title').html("Weather for " + data.city + "<br/>" +
-            data.temperature + "ºF / " + data.temperature_in_celsius + "ºC")
-        $('.pressure').text(data.pressure + 'hpa');
-        $('.humidity').text(data.humidity + '%');
-        $('.min_temperature').text(data.min_temperature + "ºF / " + data.min_temperature_in_celsius + "ºC");
-        $('.max_temperature').text(data.max_temperature + "ºF / " + data.max_temperature_in_celsius + "ºC");
-        $('.wind_speed').text(data.wind_speed + "mi/h");
+        if (data.error) {
+            $('.title').html(data.error)
+        } else {
+            $('#city_name').val(city);
+            $('.title').html("Weather for " + data.city + "<br/>" +
+                data.temperature + "ºF / " + data.temperature_in_celsius + "ºC")
+            $('.pressure').text(data.pressure + 'hpa');
+            $('.humidity').text(data.humidity + '%');
+            $('.min_temperature').text(data.min_temperature + "ºF / " + data.min_temperature_in_celsius + "ºC");
+            $('.max_temperature').text(data.max_temperature + "ºF / " + data.max_temperature_in_celsius + "ºC");
+            $('.wind_speed').text(data.wind_speed + "mi/h");
+        }
     })
 }

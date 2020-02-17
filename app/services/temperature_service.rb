@@ -2,17 +2,19 @@
 
 # Class utils temperature
 class TemperatureService
-
   # Get weather and converter fahrenheit to celsius
   #
   # @param city [string]  city name to search in Openweather2
   # @return [hash]        hash of openweather object
   def self.get_weather(city)
-    weather = Openweather2.get_weather(city: city ? city : 'Sao Paulo,BR', units: 'imperial')
+    weather = Openweather2.get_weather(city: city || 'Sao Paulo,BR', units: 'imperial')
     weather = weather.instance_values
     weather['temperature_in_celsius'] = fahrenheit_to_celsius(weather['temperature'])
     weather['min_temperature_in_celsius'] = fahrenheit_to_celsius(weather['min_temperature'])
     weather['max_temperature_in_celsius'] = fahrenheit_to_celsius(weather['max_temperature'])
+    weather
+  rescue StandardError => e
+    weather = { error: 'Error to retrieve data' }
     weather
   end
 
