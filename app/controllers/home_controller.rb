@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @weather = Openweather2.get_weather(city: 'São Paulo, Brazil', units: 'imperial')
+    @weather = TemperatureService.get_weather(params[:city] ? params[:city] : 'Sao Paulo, BR')
   end
 end

@@ -1,0 +1,67 @@
+<div class="container has-text-centered">
+  <div class="columns">
+    <div class="column is-6 is-offset-3">
+      <h1 class="title">
+        Weather for <%= @weather['city'] %><br>
+        <%= @weather['temperature'] %>&ordm;F / <%= @weather['temperature_in_celsius'] %>&ordm;C
+      </h1>
+
+      <input type="hidden" id="city_name" value="<%= @weather['city'] %>">
+
+      <span class="icon is-small" id="favorit">
+        <i class="fa fa-heart"></i>
+      </span>
+
+      <div class="subtitle">
+        <table>
+          <tbody>
+          <tr>
+            <td>Pressure</td>
+            <td class="has-text-right pressure"><%= @weather['pressure'] %>hpa</td>
+          </tr>
+          <tr>
+            <td>Humidity</td>
+            <td class="has-text-right humidity"><%= @weather['humidity'] %>%</td>
+          </tr>
+          <tr>
+            <td>Min Temperature</td>
+            <td class="has-text-right min_temperature">
+              <%= "#{@weather['min_temperature']}ºF / #{@weather['min_temperature_in_celsius']}ºC" %>
+            </td>
+          </tr>
+          <tr>
+            <td>Max Temperature</td>
+            <td class="has-text-right max_temperature">
+              <%= "#{@weather['max_temperature']}ºF / #{@weather['max_temperature_in_celsius']}ºC" %>
+            </td>
+          </tr>
+          <tr>
+            <td>Wind Speed</td>
+            <td class="has-text-right wind_speed"><%= @weather['wind_speed'] %>mi/h</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="box">
+        <div class="field is-grouped">
+          <p class="control is-expanded">
+            <input id="search_term" class="input" type="text" placeholder="Enter your place">
+          </p>
+        </div>
+      </div>
+    </div>
+    <% if current_user && params[:controller] == 'dashboard' %>
+      <div class="column">
+        <h2 class="subtitle">Favorite Cities</h2>
+
+        <div id="cities">
+          <%= render @cities %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :script_includes do %>
+  <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyASgFzxIvN2ZrB0dF7vIa-OTkKE87AjtRU&libraries=places&callback=activatePlacesSearch', 'data-turbolinks-track': 'reload', async: true %>
+<% end %>

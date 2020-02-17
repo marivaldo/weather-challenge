@@ -1,5 +1,6 @@
 class DashboardController < RestrictController
   def index
-    @weather = Openweather2.get_weather(city: 'São Paulo, Brazil', units: 'imperial')
+    @weather = TemperatureService.get_weather(params[:city] ? params[:city] : 'Sao Paulo, BR')
+    @cities = City.where(user: current_user)
   end
 end
